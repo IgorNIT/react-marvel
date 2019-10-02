@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import axios from 'axios';
+import Grid from '@material-ui/core/Grid';
 import Header from "./components/Header";
 import Loading from "./components/Loading";
 //import { marvelApi as config } from '../config'
@@ -75,9 +76,15 @@ class App extends Component {
         <div className="main">
           {this.state.posts.length === 0 && <Loading />}
           {console.log(this.state.posts)}
-          <ul>
-      
-          </ul>
+          <dvi>
+          <Grid
+              container
+              direction="row"
+              justify="center"
+              alignItems="center"
+            >
+          </Grid>
+          </dvi>
         </div>    
         <footer>
           <p>Simple page</p>
