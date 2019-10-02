@@ -14,8 +14,6 @@ class App extends Component {
         posts: []        
       };  
   }
-
-
   componentDidMount() {
        
     axios.get( "https://api.nasa.gov/planetary/apod?api_key=SkaeQVc2fa3Ffle5ixCgzhvuCLeNwRvjRU6RLlzI")
