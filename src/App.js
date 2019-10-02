@@ -3,24 +3,26 @@ import axios from 'axios';
 import Grid from '@material-ui/core/Grid';
 import Header from "./components/Header";
 import Loading from "./components/Loading";
-//import { marvelApi as config } from '../config'
+import  marvelApi from './config/marvelApi'
 import './App.css';
+
 
 
 class App extends Component {
 
   constructor(props) {
-    super(props);  
+    super(props);
+    this.data = marvelApi.getCharacters();
     this.state = {
         posts: []        
-      };  
+      };
   }
   componentDidMount() {
        
-    axios.get( "https://api.nasa.gov/planetary/apod?api_key=SkaeQVc2fa3Ffle5ixCgzhvuCLeNwRvjRU6RLlzI")
+    axios.get( this.data)
       .then(res =>{
-        const posts = res.data;
-        console.log(res.data);
+        const posts = res.data.data.results;
+        console.log(posts);
         this.setState({posts});        
       })
 
@@ -29,15 +31,6 @@ class App extends Component {
         console.log(error);
       })
   }
-
-
-  //   axios.get( "https://rxhormone.com/wp-json/wp/v2/posts")
-  //     .then(res =>{
-  //       const posts = res.data;
-  //       this.setState({posts});        
-  //   });
-  // } 
-  
  
 /*
   async componentDidMount() {
@@ -57,15 +50,7 @@ class App extends Component {
   }
   */
 
-  /*
-
-  mapSection(section) {
-    return {
-      title: section.title,
-      content: section.content.rendered      
-    };
-  }
-  */
+ 
 
   render() {
     return (
@@ -75,8 +60,8 @@ class App extends Component {
         </header>
         <div className="main">
           {this.state.posts.length === 0 && <Loading />}
-          {console.log(this.state.posts)}
-          <dvi>
+      
+          <div>
           <Grid
               container
               direction="row"
@@ -84,7 +69,7 @@ class App extends Component {
               alignItems="center"
             >
           </Grid>
-          </dvi>
+          </div>
         </div>    
         <footer>
           <p>Simple page</p>
