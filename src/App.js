@@ -1,6 +1,14 @@
 import React, { Component } from "react";
 import axios from 'axios';
-import Grid from '@material-ui/core/Grid';
+
+//import { makeStyles } from '@material-ui/core/styles';
+import GridList from '@material-ui/core/GridList';
+import GridListTile from '@material-ui/core/GridListTile';
+import GridListTileBar from '@material-ui/core/GridListTileBar';
+//import ListSubheader from '@material-ui/core/ListSubheader';
+//import IconButton from '@material-ui/core/IconButton';
+//import InfoIcon from '@material-ui/icons/Info';
+
 import Header from "./components/Header";
 import Loading from "./components/Loading";
 import  marvelApi from './config/marvelApi'
@@ -27,57 +35,38 @@ class App extends Component {
       })
 
       .catch(function (error) {
-        // handle error
         console.log(error);
       })
   }
- 
-/*
-  async componentDidMount() {
-    // error handling is important when fetching data
-    try {
-      await fetch(this.state.dataRoute)
-        .then(res => res.json())
-        .then(sections =>
-          this.setState((prevState, props) => {
-            //return { sections: sections};
-            return { sections: sections.map(this.mapSection) };
-          })
-        );
-    } catch (error) {
-      console.log(error);
-    }
-  }
-  */
-
- 
 
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <Header />
-        </header>
-        <div className="main">
-          {this.state.posts.length === 0 && <Loading />}
-      
-          <div>
-          <Grid
-              container
-              direction="row"
-              justify="center"
-              alignItems="center"
-            >
-          </Grid>
+      <div className="app">
+        <div className="app-container">
+          <header className="app-header">
+            <Header/>
+          </header>
+          <div className="app-main">
+            {this.state.posts.length === 0 && <Loading />}
+
+            
+            <GridList cellHeight={180} >          
+              {this.state.posts.map(post => (
+                <GridListTile key={post.thumbnail} sty>
+                  <img src={post.thumbnail.path + '.' + post.thumbnail.extension} alt={post.title} />
+                  <GridListTileBar
+                    title={post.name}
+                    subtitle={<span>Comics: {post.stories.available}</span>}                    
+                  />
+                </GridListTile>
+              ))}
+            </GridList>
+            
           </div>
-        </div>    
-        <footer>
-          <p>Simple page</p>
-        </footer>       
-      </div>
+        </div>
+    </div>          
     );
   }
 }
-
 
 export default App;

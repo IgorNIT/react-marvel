@@ -4,10 +4,8 @@ import React, { Component } from "react";
 class Header extends Component {
   render() {   
     return (
-      <div>
-        <div>         
-        </div>
-        <h1 className="App-title">React Marvel SPA</h1>
+      <div>        
+        <h1 className="app-title">React Marvel</h1>
       </div>
     );
   }
