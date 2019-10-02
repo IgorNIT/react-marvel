@@ -2,6 +2,10 @@ import React, { Component } from "react";
 import axios from 'axios';
 
 //import { makeStyles } from '@material-ui/core/styles';
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
+
+import Container from '@material-ui/core/Container';
 import GridList from '@material-ui/core/GridList';
 import GridListTile from '@material-ui/core/GridListTile';
 import GridListTileBar from '@material-ui/core/GridListTileBar';
@@ -41,18 +45,23 @@ class App extends Component {
 
   render() {
     return (
-      <div className="app">
-        <div className="app-container">
+      <div className="app">       
+        <AppBar position="static">        
+          <Toolbar>
+            <Container maxWidth="lg">
+              <div>menu</div>
+            </Container>
+          </Toolbar>         
+        </AppBar>
+        <Container maxWidth="lg">
           <header className="app-header">
             <Header/>
           </header>
           <div className="app-main">
-            {this.state.posts.length === 0 && <Loading />}
-
-            
+            {this.state.posts.length === 0 && <Loading />}            
             <GridList cellHeight={180} >          
               {this.state.posts.map(post => (
-                <GridListTile key={post.thumbnail} sty>
+                <GridListTile key={post.thumbnail}>
                   <img src={post.thumbnail.path + '.' + post.thumbnail.extension} alt={post.title} />
                   <GridListTileBar
                     title={post.name}
@@ -63,7 +72,7 @@ class App extends Component {
             </GridList>
             
           </div>
-        </div>
+        </Container>
     </div>          
     );
   }
