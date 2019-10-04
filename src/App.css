@@ -1,5 +1,7 @@
 .app {
   background-color: #282c34;
+  color: #fff;
+  min-height: 100vh;
 }
 
 .app-container {
@@ -22,7 +24,3 @@
   color: #09d3ac;
 }
 
-.app-main {
-  background-color: #282c34;
-  min-height: 90vh;
-}

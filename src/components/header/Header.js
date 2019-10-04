@@ -5,6 +5,7 @@ import Container from '@material-ui/core/Container';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 //import logo from './../logo.png';
+import './header-style.css';
 
 class Header extends Component {
   render() {   
@@ -13,17 +14,22 @@ class Header extends Component {
         <AppBar position="static">        
           <Toolbar>
             <Container maxWidth="lg">
-              <div>    
+              <div>
+
               <nav>
-                <ul>
-                  <li>
+                <ul className={'nav-list'}>
+                  <li className={'nav-list__item'}>
                     <Link to="/">Home</Link>
                   </li>                 
-                  <li>
-                    <Link to="/catalog">Catalog</Link>
+                  <li className={'nav-list__item'}>
+                    <Link to="/characters">Characters</Link>
+                  </li>
+                  <li className={'nav-list__item'}>
+                    <Link to="/comics">Comics</Link>
                   </li>
                 </ul>
-              </nav> 
+              </nav>
+
               </div>
             </Container>
           </Toolbar>         

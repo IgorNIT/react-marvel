@@ -5,23 +5,23 @@ import  marvelApi from '../../../config/marvelApi'
 import GridList from '@material-ui/core/GridList';
 import GridListTile from '@material-ui/core/GridListTile';
 import GridListTileBar from '@material-ui/core/GridListTileBar';
-import { Divider } from '@material-ui/core';
 import Loading from "../../Loading";
 
-class Catalog extends Component {
 
-
+class Characters extends Component {
 
     constructor(props) {
       super(props);
-      this.data = marvelApi.getCharacters();
+      this.marvelApi = marvelApi.GenerateApiData();
+      this.requestUrl = `${this.marvelApi.baseUrl}characters${this.marvelApi.apiKey}`;
       this.state = {
           posts: []        
         };
+      console.log(this.requestUrl);
     }
+
     componentDidMount() {
-         
-      axios.get( this.data)
+      axios.get(this.requestUrl)
         .then(res =>{
           const posts = res.data.data.results;
           console.log(posts);
@@ -53,4 +53,4 @@ class Catalog extends Component {
     }
 }
 
-export default Catalog;
+export default Characters;
