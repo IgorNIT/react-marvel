@@ -13,9 +13,7 @@ class Header extends Component {
       <header className="app-header">
         <AppBar position="static">        
           <Toolbar>
-            <Container maxWidth="lg">
-              <div>
-
+            <Container maxWidth="lg">              
               <nav>
                 <ul className={'nav-list'}>
                   <li className={'nav-list__item'}>
@@ -28,15 +26,10 @@ class Header extends Component {
                     <Link to="/comics">Comics</Link>
                   </li>
                 </ul>
-              </nav>
-
-              </div>
+              </nav>       
             </Container>
           </Toolbar>         
-        </AppBar>
-          <div>        
-            <h1 className="app-title">React Marvel</h1>
-          </div>
+        </AppBar>        
       </header>
     );
   }

@@ -1,14 +1,13 @@
 import React, { Component } from "react";
 import axios from 'axios';
-import  marvelApi from '../../../config/marvelApi'
+import  marvelApi from '../../config/marvelApi'
 
 import GridList from '@material-ui/core/GridList';
 import GridListTile from '@material-ui/core/GridListTile';
 import GridListTileBar from '@material-ui/core/GridListTileBar';
-import Loading from "../../Loading";
 
 
-class Comics extends Component {
+class Characters extends Component {
 
     constructor(props) {
         super(props);
@@ -35,11 +34,10 @@ class Comics extends Component {
 
     render() {
         return (
-            <div>
-                {this.state.posts.length === 0 && <Loading />}
+            <div>            
                 <GridList cellHeight={180} cols={4} spacing={30} >
                     {this.state.posts.map(post => (
-                        <GridListTile key={post.thumbnail}>
+                        <GridListTile key={post.id}>
                             <img src={post.thumbnail.path + '.' + post.thumbnail.extension} alt={post.title} />
                             <GridListTileBar
                                 title={post.title}
@@ -53,4 +51,4 @@ class Comics extends Component {
     }
 }
 
-export default Comics;
+export default Characters;

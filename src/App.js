@@ -1,32 +1,23 @@
 import React from "react";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
+import Header from "./layout/header/Header";
 
-import HomePage from './components/pages/home/home'
-import Header from "./components/header/Header";
-import Characters from "./components/pages/catalog/catalog";
-import Comics from "./components/pages/comics/index";
+import Home from './layout/home/home'
+import Characters from "./layout/characters/Characters";
+import Comics from "./layout/comics/Comics";
 import './App.css';
-import Container from "@material-ui/core/Container";
 
 export default function App() {
     return (
         <Router>
             <div className={'app'}>
-                <Header />
-                <Container maxWidth="lg">
-                    <div>
-                        <Route path="/">
-                            <HomePage />
-                        </Route>
-                        <Route path="/characters">
-                            <Characters />
-                        </Route>
-                        <Route path="/comics">
-                            <Comics />
-                        </Route>
-                    </div>
-                </Container>
+                <Header />             
+                <Switch>
+                    <Route exact path="/" component={Home} />                           
+                    <Route exact path="/characters" component={Characters} />  
+                    <Route exact path="/comics" component={Comics} />                         
+                </Switch>             
             </div>
         </Router>
     )
