@@ -1,16 +1,44 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+
+import Container from "@material-ui/core/Container";
 import styled from 'styled-components';
 import classNames from 'classnames';
 
 
-const Banner = styled.div`
-    height: 300px;
+
+const Banner = styled.div`      
+    background-size: cover;
+    margin-bottom: 40px;
+`;
+
+const BannerPlaceholder = styled.div`
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    padding: 30px 0;
+`;
+
+
+const BannerTitle = styled.h1`
+    width: 100%;
+    margin: 0;
+    color: #fff;
+    font-size: 40px;
 `;
 
 const HeaderBanner = ({
-    children, className , ...attrs
+    image, height, title, className , children, ...attrs
 }) => {
+
+    const  styleHeight= {
+        minHeight: height  + 'px',
+    };
+
+    const  styleBackground= {
+        background: 'url(' + image + ') no-repeat center',
+        backgroundSize: 'cover',
+    };
 
     const classes = classNames(
         'header-banner'
@@ -20,19 +48,32 @@ const HeaderBanner = ({
     <Banner
         className={classes}
         {...attrs}
+        style={styleBackground}
     >
-        {children}
+        <Container maxWidth="lg" >
+            <BannerPlaceholder
+                className={'header-banner__placeholder'}
+                style={styleHeight}
+            >
+                <BannerTitle>{title}</BannerTitle>
+                {children}
+            </BannerPlaceholder>
+        </Container>
     </Banner>
     );
 };
 
 HeaderBanner.propTypes = {
     children: PropTypes.node,
+    height: PropTypes.number,
+    title: PropTypes.string,
     className: PropTypes.string,
 };
 
 HeaderBanner.defaultProps = {
-    children: 'Default top banner',
+    children: '',
+    height: 300,
+    title: '',
     className: '',
 };
 

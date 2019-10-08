@@ -1,38 +1,62 @@
-import React, { Component } from "react";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import React from "react";
+import { NavLink } from 'react-router-dom'
 
 import Container from '@material-ui/core/Container';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-//import logo from './../logo.png';
+import styled from 'styled-components';
 import './header-style.css';
 
-class Header extends Component {
-  render() {   
-    return (
-      <header className="app-header">
-        <AppBar position="static">        
-          <Toolbar>
-            <Container maxWidth="lg">              
-              <nav>
-                <ul className={'nav-list'}>
-                  <li className={'nav-list__item'}>
-                    <Link to="/">Home</Link>
-                  </li>                 
-                  <li className={'nav-list__item'}>
-                    <Link to="/characters">Characters</Link>
-                  </li>
-                  <li className={'nav-list__item'}>
-                    <Link to="/comics">Comics</Link>
-                  </li>
-                </ul>
-              </nav>       
-            </Container>
-          </Toolbar>         
-        </AppBar>        
-      </header>
-    );
+
+const  HeaderPanel = styled.header`
+    background-color: #20232a;
+    color: #fff; 
+    width: 100%;
+`;
+
+const  NavList = styled.ul`
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 -15px;
+    padding: 25px 0;
+`;
+
+const  NavItem =styled.li`
+    padding: 0 15px; 
+`;
+
+const  StyledLink = styled(NavLink)`
+    color: #fff;
+    display: inline-block;
+    font-size: 22px;
+    line-height: 42px;
+    text-decoration: none;
+    font-weight: 500;
+    &.active {
+    color: red;
   }
+`;
+
+const Header = () => {
+  return (
+      <HeaderPanel className="app-header">
+          <Container maxWidth="lg">
+            <nav>
+              <NavList>
+                <NavItem>
+                  <StyledLink exact  to="/">Home</StyledLink>
+                </NavItem>
+                <NavItem>
+                  <StyledLink exact  to="/characters">Characters</StyledLink>
+                </NavItem>
+                <NavItem>
+                  <StyledLink exact  to="/comics">Comics</StyledLink>
+                </NavItem>
+              </NavList>
+            </nav>
+          </Container>
+      </HeaderPanel>
+    );
 }
+
 
 export default Header;
