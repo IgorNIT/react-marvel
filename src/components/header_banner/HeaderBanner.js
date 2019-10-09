@@ -19,7 +19,6 @@ const BannerPlaceholder = styled.div`
     padding: 30px 0;
 `;
 
-
 const BannerTitle = styled.h1`
     width: 100%;
     margin: 0;

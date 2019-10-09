@@ -24,3 +24,9 @@
   color: #09d3ac;
 }
 
+img {
+  display: block;
+  width: 100%;
+  height: auto;
+
+}

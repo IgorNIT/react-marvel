@@ -32,8 +32,8 @@ const  StyledLink = styled(NavLink)`
     text-decoration: none;
     font-weight: 500;
     &.active {
-    color: red;
-  }
+      color: red;
+    }
 `;
 
 const Header = () => {
@@ -50,6 +50,9 @@ const Header = () => {
                 </NavItem>
                 <NavItem>
                   <StyledLink exact  to="/comics">Comics</StyledLink>
+                </NavItem>
+                <NavItem>
+                  <StyledLink exact  to="/comic">Single comics page</StyledLink>
                 </NavItem>
               </NavList>
             </nav>

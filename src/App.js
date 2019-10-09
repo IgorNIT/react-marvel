@@ -6,6 +6,7 @@ import Header from "./layout/header/Header";
 import Home from './layout/home/home'
 import Characters from "./layout/characters/Characters";
 import Comics from "./layout/comics/Comics";
+import SingleComic from "./layout/singleComic/SingleComic";
 import './App.css';
 
 export default function App() {
@@ -16,7 +17,8 @@ export default function App() {
                 <Switch>
                     <Route exact path="/" component={Home} />                           
                     <Route exact path="/characters" component={Characters} />  
-                    <Route exact path="/comics" component={Comics} />                         
+                    <Route exact path="/comics" component={Comics} />
+                    <Route exact path="/comic" component={SingleComic} />
                 </Switch>             
             </div>
         </Router>
