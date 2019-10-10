@@ -1,7 +1,7 @@
 import React from "react";
 import { NavLink } from 'react-router-dom'
 
-import Container from '@material-ui/core/Container';
+import Container from 'react-bootstrap/Container'
 import styled from 'styled-components';
 import './header-style.css';
 
@@ -39,7 +39,7 @@ const  StyledLink = styled(NavLink)`
 const Header = () => {
   return (
       <HeaderPanel className="app-header">
-          <Container maxWidth="lg">
+          <Container>
             <nav>
               <NavList>
                 <NavItem>
