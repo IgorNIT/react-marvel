@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import Container from "@material-ui/core/Container";
+import Container from 'react-bootstrap/Container'
 import styled from 'styled-components';
 import classNames from 'classnames';
 

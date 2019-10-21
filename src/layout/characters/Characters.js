@@ -3,12 +3,17 @@ import axios from 'axios';
 import  marvelApi from '../../config/marvelApi'
 
 import HeaderBanner from '../../components/header_banner/HeaderBanner';
-import Container from "@material-ui/core/Container";
-import GridList from '@material-ui/core/GridList';
-import GridListTile from '@material-ui/core/GridListTile';
-import GridListTileBar from '@material-ui/core/GridListTileBar';
+
+import Container from 'react-bootstrap/Container'
+import Row from 'react-bootstrap/Row'
+import Col from 'react-bootstrap/Col'
+import Card from "../../components/card/Card";
+
+import "./Characters.sass"
+
 
 import BannerImage from '../../images/top_banners/characters_bg.jpg'
+import Pagination from "../../components/pagination/Pagination";
 
 class Characters extends Component {
 
@@ -37,22 +42,24 @@ class Characters extends Component {
 
     render() {
         return (
-          <>
-            <HeaderBanner image={BannerImage} title={'Characters'} />
-            <Container maxWidth="lg" >
-              <GridList cellHeight={180} cols={4} spacing={30} >          
-              {this.state.posts.map( (post, index) => (
-                  <GridListTile key={post.id}>
-                  <img src={post.thumbnail.path + '.' + post.thumbnail.extension} alt={post.name} />
-                    <GridListTileBar
-                      title={post.name}
-                      subtitle={<span>Comics: {post.stories.available}</span>}                    
-                    />
-                  </GridListTile>
-              ))}
-              </GridList>
-            </Container>
-          </>
+              <div className="characters-page">
+                <HeaderBanner image={BannerImage} title={'Characters'} />
+                <Container>
+                  <Row>
+                  {this.state.posts.map( (post, index) => (
+                      <Col key={post.id} lg="3" md="6" xs="12">
+                          <Card
+                              title={post.name}
+                              image={post.thumbnail.path + '.' + post.thumbnail.extension}
+                              link="#"
+                          />
+                      </Col>
+                  ))}
+                  </Row>
+                    <Pagination/>
+                </Container>
+
+              </div>
         );
     }
 }
