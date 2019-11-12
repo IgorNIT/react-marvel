@@ -1,5 +1,14 @@
-import CryptoJS from 'crypto-js'
-import moment from 'moment'
+import CryptoJS from 'crypto-js';
+import moment from 'moment';
+
+const config = {
+    'itemsToShow' : [25, 50, 75, 100],
+    'endpoint' : {
+        'characters' : '',
+        'comic' : ''
+    }
+};
+
 
 class MarvelApi {
 

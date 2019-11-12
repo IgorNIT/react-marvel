@@ -20,18 +20,24 @@ const PaginationList = styled.ul`
 const PaginationItem = styled.li`
     font-size: 20px;
     padding: 5px;
-    background: #ffffff;
-    color: #ff4444;     
-    border: 1px solid #dedada;
+    background: var(--main-white);
+    color: var(--main-red);     
+    border: 1px solid var(--border-light);
     border-radius: 3px;
     width: 50px;
     height: 50px;
     text-align: center;
-    display: felex;
+    display: flex;
     align-items: center;
     justify-content: center;
     overflow: hidden;
     margin: 0 5px;
+    cursor: pointer;
+    transition: all .5s ease;
+    &:hover {
+        background-color: var(--main-red);
+        color: var(--main-white);   
+    }
 `;
 
 

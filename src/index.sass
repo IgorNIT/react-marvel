@@ -1,8 +1,78 @@
 @import "./sass/normalize.sass"
 
+\:root
+    --main-red: #ff4444
+    --main-white: #ffffff
+    --main-txt-color: #1a1a1a
+    --main-padding: 15px
+    --border-light: #dedada
+
 body
   margin: 0
   font-family: "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif
+
+
+h1
+  font-size: 2.5rem
+
+h2
+  font-size: 2rem
+
+h3
+  font-size: 1.5rem
+
+.bold
+  font-weight: 700
+
+.align-center
+  text-align: center
+
+.align-left
+  text-align: left
+
+.title
+  position: relative
+  padding: .3em 0 .5em 0
+  margin: 0 0 30px 0
+
+  &.align-center.title--underline
+    &:before
+      content: ''
+      border: 2px solid var(--main-red)
+      width: 30px
+      position: absolute
+      bottom: 0
+      left: 0
+      right: 0
+      margin: 0 auto
+      z-index: 1
+
+    &:after
+      content: ''
+      border: 1px solid #dddddd
+      width: 170px
+      position: absolute
+      bottom: 0
+      left: 0
+      right: 0
+      margin: 0 auto
+
+  &.align-left.title--underline
+    &:after
+      content: ''
+      width: 30px
+      border: 2px solid var(--main-red)
+      position: absolute
+      left: 0
+      bottom: 0
+
+    &:before
+       content: ''
+       width: 90px
+       border: 1px solid #e3e3e3
+       position: absolute
+       left: 0
+       bottom: 0
 
 
 

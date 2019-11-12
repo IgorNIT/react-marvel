@@ -14,6 +14,7 @@ import "./Characters.sass"
 
 import BannerImage from '../../images/top_banners/characters_bg.jpg'
 import Pagination from "../../components/pagination/Pagination";
+import PaginationNumber from "../../components/PginatinNumber/PaginationNumber";
 
 class Characters extends Component {
 
@@ -46,7 +47,7 @@ class Characters extends Component {
                 <HeaderBanner image={BannerImage} title={'Characters'} />
                 <Container>
                   <Row>
-                  {this.state.posts.map( (post, index) => (
+                  {this.state.posts.map( (post) => (
                       <Col key={post.id} lg="3" md="6" xs="12">
                           <Card
                               title={post.name}
@@ -55,10 +56,16 @@ class Characters extends Component {
                           />
                       </Col>
                   ))}
-                  </Row>
-                    <Pagination/>
+                   </Row>
+                    <Row>
+                        <Col className='align-content-lg-center'>
+                            <Pagination/>
+                        </Col>
+                        <Col className='flex-grow-0'>
+                            <PaginationNumber/>
+                        </Col>
+                    </Row>
                 </Container>
-
               </div>
         );
     }

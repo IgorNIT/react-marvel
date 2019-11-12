@@ -6,10 +6,8 @@ import styled from 'styled-components';
 import classNames from 'classnames';
 
 
-
 const Banner = styled.div`      
-    background-size: cover;
-    margin-bottom: 40px;
+    margin-bottom: 40px;   
 `;
 
 const BannerPlaceholder = styled.div`
@@ -22,7 +20,7 @@ const BannerPlaceholder = styled.div`
 const BannerTitle = styled.h1`
     width: 100%;
     margin: 0;
-    color: #fff;
+    color: var(--main-white);
     font-size: 40px;
 `;
 
@@ -49,7 +47,7 @@ const HeaderBanner = ({
         {...attrs}
         style={styleBackground}
     >
-        <Container maxWidth="lg" >
+        <Container>
             <BannerPlaceholder
                 className={'header-banner__placeholder'}
                 style={styleHeight}

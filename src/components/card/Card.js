@@ -7,11 +7,11 @@ const CardContainer = styled.div`
     border-radius: 10px;
     overflow: hidden;
     background: #ffffff;
-    box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.30);
+    box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.30);
     transition: all 0.5s ease;
     margin-bottom: 30px;
     &:hover {
-        box-shadow: 0px 1px 20px 0px rgba(0, 0, 0, 0.60);
+        box-shadow: 0 1px 20px 0 rgba(0, 0, 0, 0.60);
     } 
 `;
 
@@ -28,7 +28,7 @@ const CardInfo = styled.div`
 const CardTitle = styled.a`
     font-size: 18px;
     color: #000000;
-    font-weight: bold;
+    font-weight: 700;
     transition: all 0.5s;
 `;
 
