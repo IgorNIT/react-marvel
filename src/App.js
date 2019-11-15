@@ -7,9 +7,8 @@ import Footer from "./layout/footer/Footer";
 import Home from './layout/home/home'
 import Characters from "./layout/characters/Characters";
 import Comics from "./layout/comics/Comics";
-import SingleComic from "./layout/singleComic/SingleComic";
-
-import './App.css';
+import SingleCharacter from "./layout/singleCharacter/singleCharacter";
+import Error from './layout/error/error';
 
 export default function App() {
     return (
@@ -18,9 +17,10 @@ export default function App() {
                 <Header />             
                 <Switch>
                     <Route exact path="/" component={Home} />                           
-                    <Route exact path="/characters" component={Characters} />  
+                    <Route exact path="/characters" component={Characters} />
+                    <Route path="/characters/:id" component={SingleCharacter} />
                     <Route exact path="/comics" component={Comics} />
-                    <Route exact path="/comic" component={SingleComic} />
+                    <Route path='*' component={Error} />
                 </Switch>
                 <Footer/>
             </div>

@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import axios from 'axios';
+
+
 import  marvelApi from '../../config/marvelApi'
 
 import HeaderBanner from '../../components/header_banner/HeaderBanner';
@@ -16,24 +18,45 @@ import BannerImage from '../../images/top_banners/characters_bg.jpg'
 import Pagination from "../../components/pagination/Pagination";
 import PaginationNumber from "../../components/PginatinNumber/PaginationNumber";
 
+
+
+
 class Characters extends Component {
 
     constructor(props) {
       super(props);
-      this.marvelApi = marvelApi.GenerateApiData();
-      this.requestUrl = `${this.marvelApi.baseUrl}characters${this.marvelApi.apiKey}`;
+      this.handleLimitChange = this.handleLimitChange.bind(this);
       this.state = {
-          posts: []        
-        };
-      console.log(this.requestUrl);
+          posts: [],
+          offset: 0,
+          limit: 20,
+          total: 0,
+      };
+        this.marvelApi = marvelApi.GenerateApiData();
     }
 
+    generateUrl (){
+        let limit = this.state.limit === 20 ? '': `?limit=${this.state.limit}`;
+        return `${this.marvelApi.baseUrl}characters${limit}${this.marvelApi.apiKey}`;
+    }
+
+    handleLimitChange(newlimit){
+        this.setState({limit: newlimit})
+    }
+
+/*    handleNextPage(){
+        this.setState( {offset : offset + 1})
+    }*/
+
     componentDidMount() {
-      axios.get(this.requestUrl)
+      axios.get(this.generateUrl())
         .then(res =>{
           const posts = res.data.data.results;
+          const offset = res.data.data.offset;
+          const limit = res.data.data.limit;
+          const total = res.data.data.total;
           console.log(res);
-          this.setState({posts});        
+          this.setState({posts , offset, limit, total});
         })
   
         .catch(function (error) {
@@ -42,6 +65,8 @@ class Characters extends Component {
     }
 
     render() {
+        const limit = this.state.limit;
+
         return (
               <div className="characters-page">
                 <HeaderBanner image={BannerImage} title={'Characters'} />
@@ -50,25 +75,33 @@ class Characters extends Component {
                   {this.state.posts.map( (post) => (
                       <Col key={post.id} lg="3" md="6" xs="12">
                           <Card
+                              id={post.id}
+                              link={`/characters/${post.id}`}
                               title={post.name}
                               image={post.thumbnail.path + '.' + post.thumbnail.extension}
-                              link="#"
                           />
                       </Col>
                   ))}
                    </Row>
                     <Row>
                         <Col className='align-content-lg-center'>
-                            <Pagination/>
+                            <Pagination offset={this.state.offset}/>
                         </Col>
                         <Col className='flex-grow-0'>
-                            <PaginationNumber/>
+                            <PaginationNumber
+                                onLimitChange={this.handleLimitChange}
+                                limit={limit}
+                            />
                         </Col>
                     </Row>
+                    <div>{limit}</div>
                 </Container>
               </div>
         );
     }
 }
 
+
 export default Characters;
+
+

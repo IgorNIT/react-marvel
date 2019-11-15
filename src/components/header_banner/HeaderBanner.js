@@ -28,11 +28,11 @@ const HeaderBanner = ({
     image, height, title, className , children, ...attrs
 }) => {
 
-    const  styleHeight= {
+    const styleHeight= {
         minHeight: height  + 'px',
     };
 
-    const  styleBackground= {
+    const styleBackground= {
         background: 'url(' + image + ') no-repeat center',
         backgroundSize: 'cover',
     };

@@ -1,0 +1,2 @@
+export const TOGGLE_POSTS_LIMIT = "TOGGLE_POSTS_LIMIT";
+

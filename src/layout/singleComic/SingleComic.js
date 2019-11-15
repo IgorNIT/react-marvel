@@ -12,27 +12,24 @@ import ListGroup from "../../components/list/ListGroup";
 
 
 
-import './SingleComic.sass';
-import divWithClassName from "react-bootstrap/es/utils/divWithClassName";
-
-//import HeaderBanner from "../../components/header_banner/HeaderBanner";
-//import Container from "@material-ui/core/Container";
+import './singleCharacter.sass';
 
 
-
-class SingleComic extends Component {
+class SingleCharacter extends Component {
 
     constructor(props) {
       super(props);
+
       this.marvelApi = marvelApi.GenerateApiData();
-      this.comicId = '1886';
-      this.requestUrl = `${this.marvelApi.baseUrl}/comics/${this.comicId}${this.marvelApi.apiKey}`;
+      this.comicId = this.props.match.params.id || '';
+      this.requestUrl = `${this.marvelApi.baseUrl}/characters/${this.comicId}${this.marvelApi.apiKey}`;
       this.state = {
           post: []
       };
     }
 
     componentDidMount() {
+
       axios.get(this.requestUrl)
         .then(res =>{
           const post = res.data.data.results[0];
@@ -81,4 +78,4 @@ class SingleComic extends Component {
     }
 }
 
-export default SingleComic;
+export default SingleCharacter;

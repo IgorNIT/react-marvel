@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { CSSTransition } from 'react-transition-group';
+import PropTypes from "prop-types";
+import HeaderBanner from "../header_banner/HeaderBanner";
 
 
-const itemsToShow =  [25, 50, 75, 100];
+const itemsToShow =  [20, 40, 80, 100];
 
 const  transition = 600;
 
@@ -77,23 +79,35 @@ const NumberItem = styled.li`
     }   
 `;
 
-const PaginationNumber = () => {
-
-    const [pages, setPages] = useState(25);
+const PaginationNumber = ({
+  onLimitChange, limit
+}) => {
     const [hover, setHover] = useState(false);
+
+    //let hover = false;
+    console.log(limit)
+    console.log(onLimitChange)
+
+    const handleClick = (e) =>{
+        let data = e.target.getAttribute('data-value');
+        onLimitChange(data);
+        setHover(false);
+    }
 
     return (
         <NumberWrapper
             onMouseEnter={ () => setHover(true)}
             onMouseLeave={ () => setHover(false)}
         >
-            <span >Items to Show : {pages}</span>
+            <span >Items to Show : {limit}</span>
             <CSSTransition in={hover} timeout={transition/2}>
             <NumberList>
-                {itemsToShow.map( value  => (
+                {itemsToShow.map( value => (
                     <NumberItem
                         key={value}
-                        onClick={ () => { setPages(value); setHover(false);}  }
+                        data-value={value}
+                        //onClick={(e) => onLimitChange(e.target.getAttribute('data-value'))}
+                        onClick={handleClick}
                     >{value}
                     </NumberItem>
                 ))}
@@ -102,5 +116,7 @@ const PaginationNumber = () => {
         </NumberWrapper>
     );
 };
+
+
 
 export default  PaginationNumber;

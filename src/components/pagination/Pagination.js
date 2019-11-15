@@ -1,5 +1,6 @@
 import React from "react";
-import { NavLink } from 'react-router-dom'
+import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom'
 
 
 import { MdArrowForward } from 'react-icons/md';
@@ -8,6 +9,8 @@ import { MdArrowBack } from "react-icons/md";
 
 
 import styled from 'styled-components';
+import Card from "../card/Card";
+import ListGroupItem from "../list/ListGroupItem";
 
 const PaginationList = styled.ul`
     display: flex;
@@ -42,11 +45,17 @@ const PaginationItem = styled.li`
 
 
 
-const  Pagination = ()=>{
+const  Pagination = ({
+    offset , link
+})=>{
+    const linkClassLeft = offset !== 0 ? '' : 'disabled';
+
     return(
         <PaginationList>
             <PaginationItem>
+                <Link to={link} className={linkClassLeft}>
                 <MdArrowBack/>
+                </Link>
             </PaginationItem>
             <PaginationItem>
                 <MdArrowForward />
@@ -56,5 +65,15 @@ const  Pagination = ()=>{
     );
 };
 
+
+Pagination.prototTypes = {
+    offset: PropTypes.number,
+    link: PropTypes.string
+};
+
+Pagination.default = {
+    offset: 0,
+    link: '',
+};
 
 export default  Pagination;

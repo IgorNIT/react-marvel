@@ -1,4 +1,5 @@
 import React from "react";
+import {Link} from "react-router-dom";
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
@@ -25,7 +26,7 @@ const CardInfo = styled.div`
     padding: 25px 10px;    
 `;
 
-const CardTitle = styled.a`
+const CardTitle = styled.div`
     font-size: 18px;
     color: #000000;
     font-weight: 700;
@@ -33,23 +34,27 @@ const CardTitle = styled.a`
 `;
 
 const  Card = ({
-   image , link,  title
+   image , link,  id,  title
 }) => {
 
     return (
-        <CardContainer href={link}>
-            <CardImage src={image} alt={title}/>
-            <CardInfo>
-                <CardTitle>{title}</CardTitle>
-            </CardInfo>
+        <CardContainer data-item-id={id}>
+            <Link to={link}>
+                <CardImage src={image} alt={title}/>
+                <CardInfo>
+                    <CardTitle>{title}</CardTitle>
+                </CardInfo>
+            </Link>
         </CardContainer>
     );
 };
 
 Card.prototTypes = {
+    id: PropTypes.number,
+    link: PropTypes.string,
     title: PropTypes.string,
     image: PropTypes.string,
-    link: PropTypes.string
+
 };
 
 export  default Card;
